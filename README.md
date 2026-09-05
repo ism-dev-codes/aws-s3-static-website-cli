@@ -74,7 +74,7 @@ Para replicar o resultado e implantar o site estático via AWS CLI, siga o passo
 
 > **📹 Demonstração em Vídeo:** Assista ao passo a passo completo da execução do laboratório acelerado no YouTube:
 
-[![Assistir Demonstração no YouTube](https://img.shields.io/badge/▶️_Assistir_Demonstração_Completa-YouTube-red?style=for-the-badge&logo=youtube)](COLE_O_LINK_DO_SEU_VIDEO_AQUI)
+[![Assistir Demonstração no YouTube](https://img.shields.io/badge/▶️_Assistir_Demonstração_Completa-YouTube-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=UkfHcwLwnUo)
 
 - 🤖 12. Acesse a URL pública do site estático para confirmar o funcionamento:
 
