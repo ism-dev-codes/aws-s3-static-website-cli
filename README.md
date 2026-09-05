@@ -1,10 +1,10 @@
-# ☁️ Creating a Website on S3 (AWS CLI, IAM & Scripting)
+# ☁️ Creating a Website on S3 (AWS CLI & IAM Management)
 
 > ℹ️ **NOTE:** Este é o repositório desenvolvido por **Ismael Santos de Medeiros**.
 
 Projeto com o objetivo de praticar o uso de comandos da AWS Command Line Interface (AWS CLI) a partir de uma instância Amazon EC2 para provisionar infraestrutura e hospedar um site estático no Amazon S3.
 
-Utilizei comandos de CLI para gerenciamento do S3, configuração de acesso no IAM e scripts em Bash para automação de atualizações.
+Utilizei comandos de CLI para gerenciamento do S3, configuração de acesso no IAM e liberação da hospedagem estática.
 
 ---
 
@@ -14,7 +14,7 @@ Utilizei comandos de CLI para gerenciamento do S3, configuração de acesso no I
 - [AWS IAM](https://aws.amazon.com/iam/) — Gerenciamento de identidades, usuários e políticas de acesso
 - [AWS CLI](https://aws.amazon.com/cli/) — Interface de linha de comando para interação com os serviços AWS
 - [AWS Systems Manager (SSM)](https://aws.amazon.com/systems-manager/) — Conexão remota e segura à instância EC2
-- [Linux / Bash](https://www.gnu.org/software/bash/) — Shell scripting para automação de deploy do site
+- [Linux / Bash](https://www.gnu.org/software/bash/) — Terminal para navegação e comandos CLI
 
 ---
 
@@ -28,16 +28,13 @@ Utilizei comandos de CLI para gerenciamento do S3, configuração de acesso no I
 - Ajuste de permissões do bucket desativando o *Block Public Access* e ativando *ACLs*
 - Habilitação da hospedagem de site estático via comando `aws s3 website`
 - Extração dos arquivos do site e upload para o bucket S3 com acesso de leitura pública via `aws s3 cp`
-- Criação e permissão de execução de um script em lote em Shell Script (`update-website.sh`) para automatizar atualizações
-- Otimização do script substituindo o comando `aws s3 cp` por `aws s3 sync` para transferir apenas arquivos modificados
 
 ---
 
 ## 📚 Materiais
 
-- Script de atualização em lote localizado no arquivo `update-website.sh`
 - Código-fonte do site localizado na pasta `sysops-activity-files/static-website/`
-- Documentação AWS CLI para o comando sync: [AWS CLI Sync Reference](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/sync.html)
+- Documentação AWS CLI para o S3: [AWS CLI S3 Reference](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html)
 
 ---
 
@@ -69,14 +66,11 @@ Para replicar o resultado e implantar o site estático via AWS CLI, siga o passo
 
 ![Upload dos arquivos do site via CLI](05-upload-arquivos-cli.png)
 
-- 🤖 10. Crie o script de automação com `vi update-website.sh` contendo o comando `aws s3 sync /home/ec2-user/sysops-activity-files/static-website/ s3://ismaelsantosmedeiros/ --acl public-read`
-- 🤖 11. Dê permissão de execução com `chmod +x update-website.sh` e execute com `./update-website.sh` para atualizar o site
-
 > **📹 Demonstração em Vídeo:** Assista ao passo a passo completo da execução do laboratório acelerado no YouTube:
 
 [![Assistir Demonstração no YouTube](https://img.shields.io/badge/▶️_Assistir_Demonstração_Completa-YouTube-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=UkfHcwLwnUo)
 
-- 🤖 12. Acesse a URL pública do site estático para confirmar o funcionamento:
+- 🤖 10. Acesse a URL pública do site estático para confirmar o funcionamento:
 
 ![Site do Café rodando na AWS](06-site-cafe-bakery-no-ar.png)
 
