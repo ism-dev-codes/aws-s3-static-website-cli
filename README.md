@@ -23,7 +23,7 @@ Utilizei comandos de CLI para gerenciamento do S3, configuração de acesso no I
 - Conexão à instância Amazon Linux EC2 via SSM Session Manager
 - Configuração do AWS CLI com credenciais de acesso via `aws configure`
 - Criação de um bucket S3 único no us-west-2 através do comando `aws s3api create-bucket`
-- Criação de novo usuário IAM (`awsS3user`) e configuração de login profile
+- Criação de novo usuário IAM (`awsS3ismaelmedeiros`) e configuração de login profile
 - Resolução de problema de acesso anexando a política gerenciada `AmazonS3FullAccess` ao usuário
 - Ajuste de permissões do bucket desativando o *Block Public Access* e ativando *ACLs*
 - Habilitação da hospedagem de site estático via comando `aws s3 website`
@@ -47,14 +47,33 @@ Para replicar o resultado e implantar o site estático via AWS CLI, siga o passo
 
 - 🤖 1. Conecte-se à instância Linux e altere o usuário para `ec2-user` executando `sudo su -l ec2-user`
 - 🤖 2. Configure suas credenciais na CLI com `aws configure` definindo a região `us-west-2` e formato `json`
-- 🤖 3. Crie o bucket S3 rodando `aws s3api create-bucket --bucket <NOME-DO-SEU-BUCKET> --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2`
-- 🤖 4. Crie o usuário no IAM com `aws iam create-user --user-name awsS3user` e defina a senha com `aws iam create-login-profile --user-name awsS3user --password Training123!`
-- 🤖 5. Conceda acesso total ao S3 para o usuário anexando a política: `aws iam attach-user-policy --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess --user-name awsS3user`
-- 🤖 6. No console do S3, desmarque a opção "Block all public access" e ative as "ACLs" nas permissões do bucket
-- 🤖 7. Ative a hospedagem estática executando `aws s3 website s3://<NOME-DO-SEU-BUCKET>/ --index-document index.html`
-- 🤖 8. Extraia os arquivos e envie para o S3 com o comando `aws s3 cp /home/ec2-user/sysops-activity-files/static-website/ s3://<NOME-DO-SEU-BUCKET>/ --recursive --acl public-read`
-- 🤖 9. Crie o script de automação com `vi update-website.sh` contendo o comando `aws s3 sync /home/ec2-user/sysops-activity-files/static-website/ s3://<NOME-DO-SEU-BUCKET>/ --acl public-read`
-- 🤖 10. Dê permissão de execução com `chmod +x update-website.sh` e execute com `./update-website.sh` para atualizar o site
+- 🤖 3. Crie o bucket S3 rodando `aws s3api create-bucket --bucket ismaelsantosmedeiros --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2`
+- 🤖 4. Crie o usuário no IAM com `aws iam create-user --user-name awsS3ismaelmedeiros` e defina a senha com `aws iam create-login-profile --user-name awsS3ismaelmedeiros --password Training123!`
+
+![Criação dos recursos e usuário IAM via CLI](01-criacao-recursos-cli.png)
+
+- 🤖 5. Ao tentar listar buckets no console com o novo usuário, um erro de falta de permissão será exibido:
+
+![Erro de falta de permissão no IAM](02-erro-permissao-iam.png)
+
+- 🤖 6. Conceda acesso total ao S3 para o usuário anexando a política: `aws iam attach-user-policy --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess --user-name awsS3ismaelmedeiros`
+
+![Anexando política IAM via CLI](03-anexando-politica-iam.png)
+
+- 🤖 7. No console do S3, desmarque a opção "Block all public access" e ative as "ACLs" nas permissões do bucket
+- 🤖 8. Ative a hospedagem estática executando `aws s3 website s3://ismaelsantosmedeiros/ --index-document index.html`
+
+![Hospedagem de site estático habilitada](04-hospedagem-estatica-habilitada.png)
+
+- 🤖 9. Extraia os arquivos e envie para o S3 com o comando `aws s3 cp /home/ec2-user/sysops-activity-files/static-website/ s3://ismaelsantosmedeiros/ --recursive --acl public-read`
+
+![Upload dos arquivos do site via CLI](05-upload-arquivos-cli.png)
+
+- 🤖 10. Crie o script de automação com `vi update-website.sh` contendo o comando `aws s3 sync /home/ec2-user/sysops-activity-files/static-website/ s3://ismaelsantosmedeiros/ --acl public-read`
+- 🤖 11. Dê permissão de execução com `chmod +x update-website.sh` e execute com `./update-website.sh` para atualizar o site
+- 🤖 12. Acesse a URL pública do site estático para confirmar o funcionamento:
+
+![Site do Café rodando na AWS](06-site-cafe-bakery-no-ar.png)
 
 ---
 
