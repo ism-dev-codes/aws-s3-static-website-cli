@@ -19,7 +19,7 @@
 
 Neste projeto de infraestrutura em nuvem, simulei uma demanda de suporte e administração de sistemas para uma empresa fictícia (*Café & Bakery*). O objetivo foi migrar e disponibilizar a hospedagem do site institucional estático para o **Amazon Simple Storage Service (Amazon S3)** utilizando comandos via **AWS CLI** executados a partir de uma instância Amazon EC2 conectada via **AWS Systems Manager (SSM)**.
 
-Além da hospedagem, estruturei o gerenciamento de controle de acesso (IAM/Bucket Policies/ACLs) e automatizei o processo de deploy continuo do site utilizando scripts em **Bash** para otimizar o fluxo de atualizações.
+Além da hospedagem, estruturei o gerenciamento de controle de acesso (IAM/Bucket Policies/ACLs) e automatizei o processo de deploy contínuo do site utilizando scripts em **Bash** para otimizar o fluxo de atualizações.
 
 ### 🎯 Habilidades Demonstradas
 * **Administração de Sistemas Linux & AWS CLI:** Execução de comandos de gerenciamento de nuvem diretamente via terminal.
@@ -44,7 +44,7 @@ Além da hospedagem, estruturei o gerenciamento de controle de acesso (IAM/Bucke
            ▲
            │ (Upload via AWS CLI / Shell Script)
 ┌────────────────────────────────────────────────────────┐
-│ Instância Amazon EC2 (Amazon Linux 2023)               │
+│ Instância Amazon EC2 (Amazon Linux)                    │
 │  ├── Acesso via SSM Session Manager                    │
 │  └── Script de Automação: update-website.sh            │
 └────────────────────────────────────────────────────────┘
