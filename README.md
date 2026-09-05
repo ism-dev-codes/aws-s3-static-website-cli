@@ -71,6 +71,11 @@ Para replicar o resultado e implantar o site estático via AWS CLI, siga o passo
 
 - 🤖 10. Crie o script de automação com `vi update-website.sh` contendo o comando `aws s3 sync /home/ec2-user/sysops-activity-files/static-website/ s3://ismaelsantosmedeiros/ --acl public-read`
 - 🤖 11. Dê permissão de execução com `chmod +x update-website.sh` e execute com `./update-website.sh` para atualizar o site
+
+> **📹 Demonstração em Vídeo:** Assista ao passo a passo completo da execução do laboratório acelerado no YouTube:
+
+[![Assistir Demonstração no YouTube](https://img.shields.io/badge/▶️_Assistir_Demonstração_Completa-YouTube-red?style=for-the-badge&logo=youtube)](COLE_O_LINK_DO_SEU_VIDEO_AQUI)
+
 - 🤖 12. Acesse a URL pública do site estático para confirmar o funcionamento:
 
 ![Site do Café rodando na AWS](06-site-cafe-bakery-no-ar.png)
